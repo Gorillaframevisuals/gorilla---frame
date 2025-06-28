@@ -1,0 +1,906 @@
+ <!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gorilla Frame – Dronebeelden & Cinematic Video voor Events en Bedrijven</title>
+<meta name="description" content="Gorilla Frame brengt jouw event of bedrijf tot leven met krachtige dronebeelden en cinematic videoproductie. Opnames met visie, montage met impact.">
+
+<style>
+  html, body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  body {
+    background: #f9fafb;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    background: #000000;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  header .logo {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  header .logo:hover {
+    transform: scale(1.1);
+  }
+  header .logo:active {
+    color: #3399ff;
+    transform: scale(1.1);
+  }
+  nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+  nav a:hover {
+    color: #aaddff;
+  }
+  .hero {
+    background: linear-gradient(135deg, #0e0f0f 0%, #000000 100%);
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .hero p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+  }
+  .btn-primary {
+    background: #ffa500;
+    color: #222;
+    padding: 0.75rem 1.8rem;
+    border: none;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255,165,0,0.4);
+    transition: background 0.3s ease;
+  }
+  .btn-primary:hover {
+    background: #ffb733;
+  }
+
+  .container-wrapper {
+    margin-top: 4rem;
+    margin-left: 9cm;
+    margin-right: 9cm;
+    position: relative;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: nowrap;
+    position: relative;
+    width: 100%;
+    gap: 0;
+    align-items: flex-start;
+  
+
+  }
+.hover-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('luchtfoto.png') center center/cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+
+  .container > div:first-child .hover-image {
+  opacity: 1;
+}
+
+
+  .container > div {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 600px;
+    z-index: 2;
+    margin: 0;
+    border-radius: 0;
+  }
+.container > div.fullscreen-video {
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  align-items: stretch;
+}
+
+.container > div.fullscreen-video video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+  
+
+  .text-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    text-align: center;
+    padding: 2rem;
+    z-index: 3;
+    border-radius: 0px;
+  }
+
+  .text-overlay h2 {
+    margin: 1rem 0 0.5rem 0;
+    position: relative;
+  }
+
+  .number {
+    position: absolute;
+    top: -2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  .text-overlay p {
+    max-width: 400px;
+    display: none;
+  }
+
+  .container > div.active .text-overlay p {
+    display: block;
+  }
+
+  .materialen-titel {
+    margin: 4rem auto 2rem auto;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 900;
+    color: #0a1115;
+    display: block;
+    width: 100%;
+  }
+
+  .materialen-lijst {
+    width: 300px;
+    margin-left: 14rem;
+    margin-bottom: 4rem;
+    padding: 1.5rem;
+    background: #d0d0d0;
+    border: 2px solid #ccc;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #0a1115;
+    position: relative;
+  }
+
+  .materialen-lijst ul {
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+  }
+
+  .materialen-lijst li {
+    margin-bottom: 0.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    position: relative;
+  }
+
+  .materialen-lijst li:hover,
+  .materialen-lijst li.active {
+    color: #cc8400;
+    font-weight: bold;
+  }
+
+  /* Het streepje rechts van de tekst */
+  .materialen-lijst li.active::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 100%;
+    transform: translate(0, -50%);
+    width: 5cm;
+    height: 3px;
+    background-color: #cc8400;
+    z-index: 0;
+    border-radius: 1px;
+  }
+
+  /* De afbeelding rechts van het streepje */
+  .materialen-lijst li.active img {
+    position: absolute;
+    top: 50%;
+   left: calc(100% + 4.5cm + 0.5cm); /* pas de waarde aan naargelang de nieuwe grootte */
+    transform: translateY(-14%);
+    width: 9.5cm;
+    height: auto;
+    z-index: 1;
+    pointer-events: none;
+    border-radius: 6px;
+    box-shadow: 0 0 8px rgb(255, 255, 255);
+  }
+  .klanten-titel {
+  margin: 5rem auto 2.5rem auto; /* meer ruimte boven, iets minder onder */
+  text-align: center;
+  font-size: 2.6rem;
+  font-weight: 150; /* minder vet dan 900 */
+  color: #0a1115;
+  width: 100%;
+}
+
+.klant-logo {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.klant-logo img {
+  max-width: 200px;
+  height: auto;
+  opacity: 0.9;
+}
+.klant-logo {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 1.5rem;
+}
+
+.klant-logo img {
+  max-width: 200px;
+  height: auto;
+  opacity: 0.9;
+}
+
+
+  footer {
+    background: #222;
+    color: #ccc;
+    padding: 2rem;
+    text-align: center;
+    margin-top: auto;
+  }
+
+  footer a {
+    color: #ffa500;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .luchtfoto-kader {
+  position: relative;
+}
+
+.foto-achtergrond {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('luchtfoto.png') center center/cover no-repeat;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.luchtfoto-kader.active .foto-achtergrond {
+  opacity: 1;
+}
+
+  .container > div.hidden {
+  display: none !important;
+
+}
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .container-wrapper {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .container > div {
+    min-height: 300px;
+  }
+
+  .materialen-lijst {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .materialen-lijst li.active::after {
+    display: none; /* verberg lijn op mobiel */
+  }
+
+  .materialen-lijst img {
+    position: static !important;
+    display: block !important;
+    margin: 1rem auto 0 auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 300px !important;
+  }
+
+  .klant-logo {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .klanten-titel {
+    font-size: 2rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    margin-top: 1rem;
+    width: 100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+
+  .container-wrapper {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .container {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .container > div {
+    min-height: 300px;
+    height: 300px;
+    width: 100%;
+    padding: 0;
+    margin: 0 auto;
+  }
+
+  .container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .text-overlay {
+    padding: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .text-overlay h2 {
+    font-size: 1.3rem;
+  }
+
+  .text-overlay p {
+    font-size: 1rem;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+
+  .materialen-lijst {
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .materialen-lijst li.active::after {
+    display: none;
+  }
+
+  .materialen-lijst img {
+    position: static !important;
+    display: block !important;
+    margin: 1rem auto 0 auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 300px !important;
+  }
+
+  .klant-logo {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .klanten-titel {
+    font-size: 2rem;
+  }
+}
+@media (max-width: 768px) {
+  .container > div {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .container > div.hidden {
+    display: block !important;
+  }
+
+  .container > div .text-overlay p {
+    display: block !important;
+  }
+
+  .container > div.active {
+    display: block !important;
+  }
+}
+  
+.review-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 4rem;
+  }
+  .review-slider {
+    display: flex;
+    overflow-x: hidden;
+    scroll-snap-type: x mandatory;
+    padding: 2rem 0;
+    scroll-behavior: smooth;
+    width: 100%;
+    max-width: 700px;
+  }
+  .review-slider::-webkit-scrollbar {
+    display: none;
+  }
+  .review-slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    animation: fadeIn 1s ease-in-out;
+  }
+  .review-content {
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    border: 1px solid #ddd;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .review-content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .review-content p {
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: 1rem;
+  }
+  .review-content .author {
+    font-weight: bold;
+    color: #0a1115;
+  }
+  .stars {
+    margin-top: 0.3rem;
+    color: #f5a623;
+    font-size: 1.2rem;
+  }
+  .review-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #333;
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 2;
+  }
+  .review-btn.left {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .review-btn.right {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .dots {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .dot {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .dot.active {
+    background-color: #f5a623;
+  }
+  @media (max-width: 768px) {
+    .review-wrapper {
+      padding: 0 1rem;
+    }
+    .review-btn.left, .review-btn.right {
+      display: none;
+    }
+    .review-content {
+      padding: 1.5rem;
+    }
+  }
+  .container > div {
+  transition: transform 0.3s ease;
+}
+.container > div.active {
+  transform: scale(1.05);
+}
+.container > div .text-overlay p {
+  display: none;
+}
+.container > div.active .text-overlay p {
+  display: block;
+}
+.container > div {
+  transition: transform 0.3s ease, filter 0.3s ease, opacity 0.3s ease;
+  transform: scale(1);
+  filter: brightness(1);
+  opacity: 1;
+}
+
+.container > div.active {
+  transform: scale(1.05);
+  z-index: 3;
+}
+
+.container > div:not(.active) {
+  filter: brightness(0.6);
+  transform: scale(0.95);
+  opacity: 0.8;
+}
+
+</style>
+
+
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">Gorilla frame</a>
+  <nav>
+    <a href="diensten.html">Diensten</a>
+    <a href="overons.html">Over ons</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>Welkom bij Gorilla Frame</h1>
+  <p>Uw betrouwbare partner voor hoogwaardige oplossingen en innovatieve diensten. Ontdek hoe wij uw project kunnen versterken.</p>
+  <a href="contact.html" class="btn-primary">Contacteer ons</a>
+</section>
+
+<div class="container-wrapper">
+  <div class="hover-image"></div>
+  <div class="container">
+    <div class="active luchtfoto-kader">
+      <div class="foto-achtergrond" style="opacity: 1;"></div>
+      <div class="text-overlay">
+        <h2><span class="number">01</span> Dronefotografie</h2>
+        <p>Dronebeelden maken van bovenuit maakt het verschil: je bekijkt een locatie in één oogopslag én vanuit een uniek perspectief.</p>
+      </div>
+    </div>
+    <div>
+      <video src="luchtvideo.mp4" muted loop></video>
+      <div class="text-overlay">
+        <h2><span class="number">02</span> Luchtvideo</h2>
+        <p>Onze video-opnames geven elke kijker een nieuwe blik op uw gebouw, locatie of infrastructuur. Beelden met impact die blijven hangen.</p>
+      </div>
+    </div>
+    <div>
+      <video src="bedrijfsfilmsuninvest.mp4" autoplay muted loop playsinline></video>
+      <div class="text-overlay">
+        <h2><span class="number">03</span> Bedrijfsfilm</h2>
+        <p>Toon de kracht van je bedrijf in volle actie. We leggen de juiste accenten in beeld en zorgen voor een sterke eerste indruk.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="reviews" data-aos="fade-in">
+  <h2 class="klanten-titel">Wat zeggen onze klanten?</h2>
+  <div class="review-wrapper">
+    <button class="review-btn left" onclick="scrollReviews(-1)">&#10094;</button>
+    <div class="review-slider" id="reviewSlider">
+      <div class="review-slide">
+        <div class="review-content">
+          <p>“De samenwerking met Gorilla Frame verliep uiterst professioneel. Ze begrepen onze visie perfect en leverden een verbluffend resultaat af.”</p>
+          <div class="author">— Tim Janssens, CEO bij Sun Invest</div>
+          <div class="stars">★★★★★</div>
+        </div>
+      </div>
+      <div class="review-slide">
+        <div class="review-content">
+          <p>“Het contact met Thomas verliep erg vlot. Op de filmdag zelf waren Thomas en zijn collega Austyn perfect voorbereid. Ze namen eerst even de tijd om samen te overlopen wat er gefilmd moest worden, en zijn daarna efficiënt aan de slag gegaan.
+           Het eindresultaat? Een indrukwekkende video die onze verwachtingen ruimschoots heeft overtroffen.”</p>
+          <div class="author">— Tom  </div>
+          <div class="stars">★★★★</div>
+        </div>
+      </div>
+    </div>
+    <button class="review-btn right" onclick="scrollReviews(1)">&#10095;</button>
+  </div>
+  <div class="dots" id="dots"></div>
+</section>
+
+<h2 class="materialen-titel">Onze Materialen</h2>
+
+<div class="materialen-lijst">
+  <ul>
+    <li onclick="selectMateriaal(this)">Mavic Mini 4</li>
+    <li onclick="selectMateriaal(this)">Sony FX30</li>
+    <li onclick="selectMateriaal(this)">Avata 2</li>
+    <li onclick="selectMateriaal(this)">GoPro 12</li>
+   
+  </ul>
+</div>
+
+<h2 class="klanten-titel">Onze klanten</h2>
+<div class="klant-logo">
+  <img src="sun-invest.png" alt="Sun Invest logo">
+  <img src="easypost_with_frame_suninvest_style.png" alt="EasyPost logo" class="easypost-logo">
+</div>
+
+
+<footer>
+  <p>© 2025 Gorilla Frame - Alle rechten voorbehouden.</p>
+  <p>Contact: <a href="mailto:contact.gorillaframe@gmail.com">contact.gorillaframe@gmail.com</a> | Tel: +32 468 166 571</p>
+</footer>
+
+<script>
+
+
+   const cards = document.querySelectorAll('.container > div');
+
+cards.forEach(card => {
+  card.addEventListener('mouseenter', () => {
+    cards.forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+  });
+});
+
+
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const videos = document.querySelectorAll('.container video');
+    videos.forEach(video => {
+      video.play().catch(() => {
+        // Autoplay kan geblokkeerd worden
+      });
+    });
+  });
+</script>
+
+<script>
+
+  let huidigeIndex = 0;
+
+  function selectMateriaal(el) {
+    const lis = document.querySelectorAll('.materialen-lijst li');
+    const nieuweIndex = Array.from(lis).indexOf(el);
+    const richting = nieuweIndex > huidigeIndex ? 'omlaag' : 'omhoog';
+
+    // Verwijder vorige actieve klassen en afbeeldingen
+    lis.forEach((li) => {
+      li.classList.remove('active');
+    });
+
+    const materialenLijst = document.querySelector('.materialen-lijst');
+    const oudeImg = materialenLijst.querySelector('img');
+    if (oudeImg) {
+      oudeImg.style.transition = 'transform 0.4s ease, opacity 0.3s ease';
+      oudeImg.style.opacity = '0';
+      oudeImg.style.transform = richting === 'omlaag' ? 'translateY(-100%)' : 'translateY(100%)';
+      setTimeout(() => oudeImg.remove(), 400);
+    }
+
+    el.classList.add('active');
+
+    const bestandMapping = {
+      'Mavic Mini 4': 'image.png',
+      'Sony FX30': 'sony-fx30.png',
+      'Avata 2': 'dji-avata2.png',
+      'GoPro 12': 'gopro12.png',
+      'Mini 6': 'mini6.png'
+    };
+
+    const positieMapping = {
+      'Mavic Mini 4': { width: '9.5cm', top: '0rem', left: 'calc(100% + 4.5cm)' },
+      'Sony FX30': { width: '9cm', top: '-1rem', left: 'calc(100% + 5cm)' },
+      'Avata 2': { width: '8cm', top: '-1rem', left: 'calc(100% + 4.8cm)' },
+      'GoPro 12': { width: '7cm', top: '-1rem', left: 'calc(100% + 4.5cm)' },
+      'Mini 6': { width: '9cm', top: '15rem', left: 'calc(100% + 4.4cm)' }
+    };
+
+    const naam = el.textContent.trim();
+    const bestandNaam = bestandMapping[naam];
+    const positie = positieMapping[naam];
+
+    const img = document.createElement('img');
+    img.src = bestandNaam;
+    img.alt = naam;
+    img.style.position = 'absolute';
+    img.style.opacity = '0';
+    img.style.transition = 'transform 0.4s ease, opacity 0.4s ease';
+    img.style.transform = richting === 'omlaag' ? 'translateY(100%)' : 'translateY(-100%)';
+    img.style.left = positie.left;
+    img.style.top = positie.top;
+    img.style.width = positie.width;
+    img.style.zIndex = '1';
+    img.style.pointerEvents = 'none';
+    img.style.borderRadius = '6px';
+    img.style.boxShadow = '0 0 8px rgb(255, 255, 255)';
+
+    materialenLijst.appendChild(img);
+
+    requestAnimationFrame(() => {
+      img.style.opacity = '1';
+      img.style.transform = 'translateY(0)';
+    });
+
+    huidigeIndex = nieuweIndex;
+  }
+
+  // Initieel selecteren
+  selectMateriaal(document.querySelector('.materialen-lijst li'));
+</script>
+<script>
+  // Zorg dat op mobiel alles zichtbaar blijft
+  if (window.innerWidth <= 768) {
+    const items = document.querySelectorAll('.container > div');
+    items.forEach((div) => {
+      div.classList.remove('hidden');
+      div.classList.add('active');
+    });
+  }
+
+</script>
+<script>
+  if (window.innerWidth <= 768) {
+    const videos = document.querySelectorAll('.container video');
+    videos.forEach(video => {
+      video.play().catch(() => {
+        // sommige browsers blokkeren autoplay, niks aan te doen
+      });
+    });
+  }
+</script>
+<script>
+  const slider = document.getElementById('reviewSlider');
+  const dotsContainer = document.getElementById('dots');
+
+  function scrollReviews(direction) {
+    const slideWidth = slider.offsetWidth;
+    slider.scrollBy({ left: direction * slideWidth, behavior: 'smooth' });
+  }
+
+  function updateDots() {
+    const slideWidth = slider.offsetWidth;
+    const scrollLeft = slider.scrollLeft;
+    const index = Math.round(scrollLeft / slideWidth);
+    const dots = document.querySelectorAll('.dot');
+    dots.forEach(dot => dot.classList.remove('active'));
+    if (dots[index]) dots[index].classList.add('active');
+  }
+
+  function createDots() {
+    const slides = document.querySelectorAll('.review-slide');
+    slides.forEach((_, i) => {
+      const dot = document.createElement('span');
+      dot.classList.add('dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        slider.scrollTo({ left: i * slider.offsetWidth, behavior: 'smooth' });
+      });
+      dotsContainer.appendChild(dot);
+    });
+  }
+
+  function autoScroll() {
+    const slides = document.querySelectorAll('.review-slide');
+    let currentIndex = 0;
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % slides.length;
+      slider.scrollTo({ left: currentIndex * slider.offsetWidth, behavior: 'smooth' });
+    }, 6000);
+  }
+
+  slider.addEventListener('scroll', updateDots);
+  createDots();
+  autoScroll();
+</script>
+
+
+</body>
+</html>
