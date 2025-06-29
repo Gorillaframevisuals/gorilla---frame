@@ -200,6 +200,36 @@
       text-decoration: none;
       font-weight: 600;
     }
+    .socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 3rem 0 2rem;
+  flex-wrap: wrap;
+}
+
+.social-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #000;
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+.social-button:hover {
+  background: #444;
+}
+
+.social-button img {
+  width: 24px;
+  height: 24px;
+}
+
   </style>
 </head>
 <body>
@@ -293,7 +323,20 @@
       </div>
     </div>
   </div>
-
+<div class="socials">
+  <a href="https://www.instagram.com/gorillaframe?igsh=MXJrZXAxNHNjaWI4Nw%3D%3D&utm_source=qr" target="_blank" class="social-button">
+    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Instagram" />
+    Instagram
+  </a>
+  <a href="https://www.tiktok.com/@gorilla.frame?_t=ZG-8xbfBeAGJhB&_r=1" target="_blank" class="social-button">
+    <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" />
+    TikTok
+  </a>
+  <a href="https://be.linkedin.com/in/gorilla-frame-51ab74366" target="_blank" class="social-button">
+    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" />
+    LinkedIn
+  </a>
+</div>
   <footer>
     <p>© 2025 Gorilla frame - Alle rechten voorbehouden.</p>
     <p>Contact: <a href="mailto:contact.gorillaframe@gmail.com">contact.gorillaframe@gmail.com</a> | Tel: 0468166571</p>
@@ -326,5 +369,7 @@
       });
     });
   </script>
+  
+
 </body>
 </html>
