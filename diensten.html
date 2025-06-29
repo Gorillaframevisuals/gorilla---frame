@@ -125,6 +125,20 @@
       margin-top: auto; /* plaatst footer onderaan na content */
     }
     footer a { color: #ffa500; text-decoration: none; }
+    .text-box .number {
+  display: inline-block;
+  min-width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #ffa500;
+  color: #000;
+  font-weight: bold;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
 @media (max-width: 768px) {
   section.hero {
     padding: 2rem 1rem;
@@ -193,6 +207,8 @@
       <a href="#service-1" class="tab active"><span class="icon">+</span> Dronefotografie</a>
       <a href="#service-2" class="tab"><span class="icon">+</span> Luchtvideo</a>
       <a href="#service-3" class="tab"><span class="icon">+</span> Bedrijfsfilm</a>
+      <a href="#service-4" class="tab"><span class="icon">+</span> Events</a>
+
     </div>
   </section>
 
@@ -238,7 +254,19 @@
     </div>
     </div>
   </div>
-
+<div id="service-4" class="service-panel">
+  <div class="service-panel__bg"></div>
+  <div class="service-content">
+    <div class="text-box">
+      <span class="number">4</span><h2>EVENT VIDEO'S DIE JE BELEVING TERUG BRENGEN</h2>
+      <p>Van festivals en sportwedstrijden tot bedrijfsfeesten en privé-events — Gorilla Frame legt elk moment vast met precisie, emotie en een cinematische flair. Beelden die het publiek laten herbeleven alsof ze er opnieuw bij zijn.</p>
+      <a href="gekidee.html"><button>Ontdek hoe wij jouw event vastleggen +</button></a>
+    </div>
+    <div class="image-box">
+      <video src="eventvideo.mp4" autoplay loop muted playsinline style="width:110%; height:100%; object-fit:cover; transform: skewX(-10deg) translateX(-10%); transform-origin:top left;"></video>
+    </div>
+  </div>
+</div>
   <footer>
     <p>© 2025 Gorilla Frame – Alle rechten voorbehouden.</p>
     <p>Contact: <a href="mailto:contact.gorillaframe@gmail.com">contact.gorillaframe@gmail.com</a> | Tel: +32 (0)46 816 6571</p>
