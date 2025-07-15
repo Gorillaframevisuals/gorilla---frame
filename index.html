@@ -331,70 +331,8 @@
   display: none !important;
 
 }
-@media screen and (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 
-  nav {
-    margin-top: 1rem;
-    width: 100%;
-    justify-content: space-around;
-    flex-wrap: wrap;
-  }
 
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-
-  .hero p {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-
-  .container-wrapper {
-    margin-left: 1rem;
-    margin-right: 1rem;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-
-  .container > div {
-    min-height: 300px;
-  }
-
-  .materialen-lijst {
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  .materialen-lijst li.active::after {
-    display: none; /* verberg lijn op mobiel */
-  }
-
-  .materialen-lijst img {
-    position: static !important;
-    display: block !important;
-    margin: 1rem auto 0 auto !important;
-    transform: none !important;
-    width: 100% !important;
-    max-width: 300px !important;
-  }
-
-  .klant-logo {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .klanten-titel {
-    font-size: 2rem;
-  }
-}
 @media screen and (max-width: 768px) {
   header {
     flex-direction: column;
@@ -433,6 +371,9 @@
     width: 100%;
     padding: 0;
     margin: 0 auto;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
 
   .container video {
@@ -455,6 +396,7 @@
     font-size: 1rem;
     max-width: 90%;
     margin: 0 auto;
+    display: block !important;
   }
 
   .materialen-lijst {
@@ -485,26 +427,21 @@
   .klanten-titel {
     font-size: 2rem;
   }
-}
-@media (max-width: 768px) {
-  .container > div {
-    display: block !important;
-    visibility: visible !important;
-    opacity: 1 !important;
+
+  .review-wrapper {
+    padding: 0 1rem;
   }
 
-  .container > div.hidden {
-    display: block !important;
+  .review-btn.left,
+  .review-btn.right {
+    display: none;
   }
 
-  .container > div .text-overlay p {
-    display: block !important;
-  }
-
-  .container > div.active {
-    display: block !important;
+  .review-content {
+    padding: 1.5rem;
   }
 }
+
   
 .review-wrapper {
     position: relative;
