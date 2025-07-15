@@ -20,40 +20,72 @@
     display: flex;
     flex-direction: column;
   }
-  header {
-    background: #000000;
-    color: white;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+ header {
+  background: #000;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+header .logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+header .logo:hover {
+  transform: scale(1.1);
+}
+
+header .logo:active {
+  color: #ffa500;
+  transform: scale(1.1);
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 1.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+}
+
+nav a:hover {
+  color: #ffa500;
+}
+
+@media (max-width: 768px) {
+  nav {
+    margin-top: 1rem;
+    justify-content: center;
   }
-  header .logo {
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 1.5px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.2s ease;
-  }
-  header .logo:hover {
-    transform: scale(1.1);
-  }
-  header .logo:active {
-    color: #3399ff;
-    transform: scale(1.1);
-  }
+
   nav a {
-    color: white;
-    text-decoration: none;
-    margin-left: 1.5rem;
-    font-weight: 600;
-    transition: color 0.3s ease;
+    margin-left: 0;
+    font-size: 0.95rem;
   }
-  nav a:hover {
-    color: #aaddff;
-  }
+}
+
   .hero {
     background: linear-gradient(135deg, #0e0f0f 0%, #000000 100%);
     color: white;
@@ -584,13 +616,15 @@
 </head>
 <body>
 <header>
-  <a href="index.html" class="logo">Gorilla frame</a>
+  <a href="index.html" class="logo">Gorilla Frame</a>
   <nav>
+    <a href="index.html">Home</a>
     <a href="diensten.html">Diensten</a>
-    <a href="overons.html">Over ons</a>
+    <a href="overons.html">Over Ons</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
+
 
 <section class="hero">
   <h1>Welkom bij Gorilla Frame</h1>
