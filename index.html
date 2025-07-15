@@ -839,7 +839,7 @@ cards.forEach(card => {
     setInterval(() => {
       currentIndex = (currentIndex + 1) % slides.length;
       slider.scrollTo({ left: currentIndex * slider.offsetWidth, behavior: 'smooth' });
-    }, 6000);
+    }, 9000);
   }
 
   slider.addEventListener('scroll', updateDots);
