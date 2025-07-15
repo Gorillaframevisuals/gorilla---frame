@@ -69,6 +69,24 @@ nav a {
 nav a:hover {
   color: #ffa500;
 }
+.middle a {
+  color: white;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.middle a:hover {
+  color: #ffa500;
+}
+
+.left h1 span.fly {
+  color: #ffa500;
+}
+
+.left h1 span.white {
+  color: white;
+}
+
 
 @media (max-width: 768px) {
   nav {
@@ -90,13 +108,7 @@ nav a:hover {
 
     .column { width: 100%; }
 
-    .left h1 {
-      font-size: 2.7rem;
-      font-weight: 900;
-      line-height: 1.2;
-      margin-bottom: 1rem;
-      color: #ffa500;
-    }
+ 
 
     .left p {
       font-size: 1.1rem;
@@ -256,6 +268,7 @@ nav a:hover {
   height: 24px;
 }
 
+
   </style>
 </head>
 <body>
@@ -264,7 +277,7 @@ nav a:hover {
   <nav>
     <a href="index.html">Home</a>
     <a href="diensten.html">Diensten</a>
-    <a href="overons.html">Over Ons</a>
+    <a href="over.html">Over Ons</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
@@ -272,12 +285,16 @@ nav a:hover {
 
   <div class="container">
     <div class="column left">
-      <h1>LET’S FLY<br />TOGETHER</h1>
+      <h1><span class="white">LET’S</span> <span class="fly">FLY</span><br><span class="white">TOGETHER</span></h1>
+
       <p>Een gek idee, coole plot of start je van nul? Vul onze vragenlijst in en je ontvangt een vrijblijvende prijs op maat van jouw project.</p>
     </div>
 
     <div class="column middle">
-      <p><strong>CONTACTEER ONS OP</strong><br /><br />contact.gorillaframe@gmail.com<br /><br />Tel: +32 (0)46 816 6571</p>
+      <p><strong>CONTACTEER ONS OP</strong><br />
+<a href="mailto:contact.gorillaframe@gmail.com">contact.gorillaframe@gmail.com</a><br />
+Tel: <a href="tel:+32468166571">+32 46 816 6571</a></p>
+
     </div>
 
     <div class="column right">
@@ -367,7 +384,8 @@ nav a:hover {
 </div>
   <footer>
     <p>© 2025 Gorilla frame - Alle rechten voorbehouden.</p>
-    <p>Contact: <a href="mailto:contact.gorillaframe@gmail.com">contact.gorillaframe@gmail.com</a> | Tel: 0468166571</p>
+    <p>Contact: <a href="mailto:contact.gorillaframe@gmail.com">contact.gorillaframe@gmail.com</a> |
+      Tel: <a href="tel:+32468166571">+32 46 816 6571</a></p>
   </footer>
 
   <script>
